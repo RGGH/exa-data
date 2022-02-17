@@ -5,7 +5,7 @@ psql -U postgres <<-EOSQL
     GRANT ALL PRIVILEGES ON DATABASE pythontest_db TO docker;
     \connect pythontest_db docker
     BEGIN;
-        CREATE TABLE DOCUMENT_TEMPLATE(
+        CREATE TABLE MOO2(
             ID INTEGER NOT NULL,
             NAME TEXT,
             SHORT_DESCRIPTION TEXT,
@@ -22,5 +22,4 @@ psql -U postgres <<-EOSQL
         ,NOW() - '1 day'::INTERVAL * (RANDOM()::int * 100 + 100)
     FROM generate_series(1,100) id;
     COMMIT;
-    select * from document_template limit 3;
 EOSQL
