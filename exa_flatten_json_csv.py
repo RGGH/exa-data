@@ -12,7 +12,7 @@ import pandas as pd
 
 from set_constants import set_paths
 
-CSV_DIRECTORY = set_paths()
+csv_directory = set_paths()
 
 '''Load the JSON and flatted mulitilayer nesting'''
 def read_json(filename: str) -> dict:
@@ -45,10 +45,10 @@ def main():
     """
 
     try:
-        os.makedirs(CSV_DIRECTORY, exist_ok=True)
-        print(f"Directory {CSV_DIRECTORY} created successfully")
+        os.makedirs(csv_directory, exist_ok=True)
+        print(f"Directory {csv_directory} created successfully")
     except OSError as error:
-        print(f"Directory {CSV_DIRECTORY} can not be created: ",error)
+        print(f"Directory {csv_directory} can not be created: ",error)
 
     os.chdir("data")
     print("Start conversion")

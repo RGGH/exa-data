@@ -1,11 +1,12 @@
+'''Set filepaths'''
 import configparser  
 import os
 
+'''Set CSV Path in the ini file'''
 def set_paths()->str:   
     config = configparser.ConfigParser()
     ini_path = os.path.join(os.getcwd(),'conf.ini')
     config.read(ini_path)
 
-    CSV_DIRECTORY = config.get('PATHS','csv_dir')
-    return CSV_DIRECTORY
-
+    csv_directory = config.get('PATHS','csv_dir')
+    return csv_directory

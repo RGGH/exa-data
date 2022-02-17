@@ -12,8 +12,8 @@ import pandas as pd
 # Set file path for CSVs
 from set_constants import set_paths
 
-CSV_DIRECTORY = set_paths()
-os.chdir(CSV_DIRECTORY)
+csv_directory = set_paths()
+os.chdir(csv_directory)
 
 
 def get_csvs(csv_file):
