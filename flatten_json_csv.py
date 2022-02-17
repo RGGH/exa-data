@@ -1,5 +1,7 @@
-# Flatten the 1 CSV 
-# Reference : https://www.geeksforgeeks.org/convert-nested-json-to-csv-in-python/?ref=rp
+'''
+Flattens all JSON files to CSV
+!pip install pandas
+'''
 
 import glob
 import json
@@ -28,43 +30,43 @@ def normalize_json(data: dict) -> dict:
         else:
             for k, v in value.items():
                 new_data[key + "_" + k] = v
-    
+
     return new_data
 
 
 def main():
-    
-        CSV_DIRECTORY = 'data/flattened_csvs'
+    '''create output directory, read JSON, flatten, output to CSV
+    iterates through files which have *.json extension
+    '''
 
-        
-        try:
-            os.makedirs(CSV_DIRECTORY, exist_ok = True)
-            print(f"Directory {CSV_DIRECTORY} created successfully")
-        except OSError as error:
-            print(f"Directory {CSV_DIRECTORY} can not be created")
+    CSV_DIRECTORY = 'data/flattened_csvs'
 
-        os.chdir('data')
-        print ("Start conversion")
-        for json_file in glob.iglob('*.json'):
-            print(json_file)
-            if json_file.endswith('.json'):
-                print(json_file)
-                fname = (os.path.splitext(json_file)[0])
-                print (fname)
+    try:
+        os.makedirs(CSV_DIRECTORY, exist_ok=True)
+        print(f"Directory {CSV_DIRECTORY} created successfully")
+    except OSError as error:
+        print(f"Directory {CSV_DIRECTORY} can not be created")
 
-                # Read the JSON file as python dictionary
-                data = read_json(json_file)
+    os.chdir('data')
+    print("Start conversion")
+    for json_file in glob.iglob('*.json'):
 
-                # Normalize the nested python dict
-                new_data = normalize_json(data=data)
-                print("New dict:", new_data, "\n")
+        if json_file.endswith('.json'):
 
-                # Create Pandas dataframe
-                dataframe = pd.DataFrame(new_data)
+            # Create filename minus extension
+            fname = (os.path.splitext(json_file)[0])
 
-   
-                # Write to a CSV file
-                dataframe.to_csv("flattened_csvs/" + fname + ".csv")
+            # Read the JSON file as a Python dictionary
+            data = read_json(json_file)
+
+            new_data = normalize_json(data=data)
+            #print("New dict:", new_data, "\n")
+            print(f"converting {fname}")
+
+            dataframe = pd.DataFrame(new_data)
+            dataframe.to_csv("flattened_csvs/" + fname + ".csv")
+
+    print("\ncomplete, converted csv files are in 'data/flattened_csvs'\n")
 
 
 if __name__ == '__main__':
