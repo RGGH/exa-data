@@ -16,11 +16,10 @@ CSV_DIRECTORY = set_paths()
 
 '''Load the JSON and flatted mulitilayer nesting'''
 def read_json(filename: str) -> dict:
-    
 
     try:
-        with open(filename, "r") as f:
-            data = json.loads(f.read())
+        with open(filename, "r") as json_file:
+            data = json.loads(json_file.read())
     except:
         raise Exception(f"Reading {filename} file encountered an error")
 
@@ -28,14 +27,14 @@ def read_json(filename: str) -> dict:
 
 
 def normalize_json(data: dict) -> dict:
-
-    new_data = dict()
+    
+    new_data = {}
     for key, value in data.items():
         if not isinstance(value, dict):
             new_data[key] = value
         else:
-            for k, v in value.items():
-                new_data[key + "_" + k] = v
+            for k2, v2 in value.items():
+                new_data[key + "_" + k2] = v2
 
     return new_data
 
@@ -49,7 +48,7 @@ def main():
         os.makedirs(CSV_DIRECTORY, exist_ok=True)
         print(f"Directory {CSV_DIRECTORY} created successfully")
     except OSError as error:
-        print(f"Directory {CSV_DIRECTORY} can not be created")
+        print(f"Directory {CSV_DIRECTORY} can not be created: ",error)
 
     os.chdir("data")
     print("Start conversion")
