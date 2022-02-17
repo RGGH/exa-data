@@ -126,11 +126,12 @@ def get_csvs(csv_file):
     }
 
 
-'''main - import and parse all CSVS'''
 def main():
+    '''main - import and parse all CSVS'''
     for csv_file in glob.iglob("*.csv"):
         print(get_csvs(csv_file))
 
-'''main driver'''
+
 if __name__ == '__main__':
+    '''main driver'''
     main()

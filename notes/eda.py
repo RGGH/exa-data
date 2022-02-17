@@ -1,10 +1,10 @@
 from pprint import pprint
 import json
 
-test_file = "data/Zane918_Schoen8_4995ca99-2ab9-3b18-a56e-c33d29e53af0.json"
+trial_file = "data/Zane918_Schoen8_4995ca99-2ab9-3b18-a56e-c33d29e53af0.json"
 
 # load one file
-with open(test_file) as json_file:
+with open(trial_file) as json_file:
     data_dict = json.load(json_file)
 
 
