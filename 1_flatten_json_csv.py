@@ -1,20 +1,18 @@
 '''
-Flattens all JSON files to CSV
+Flattens all source JSON files to CSV
 !pip install pandas
+Proceed to parse for SQL afterwards
 '''
 
 import glob
 import json
 import os
-import configparser
 
 import pandas as pd
 
-config = configparser.ConfigParser()
-ini_path = os.path.join(os.getcwd(),'conf.ini')
-config.read(ini_path)
+from set_constants import set_paths
 
-CSV_DIRECTORY = config.get('PATHS','csv_dir')
+CSV_DIRECTORY = set_paths()
 
 
 def read_json(filename: str) -> dict:
@@ -42,9 +40,9 @@ def normalize_json(data: dict) -> dict:
 
 
 def main():
-    '''create output directory, read JSON, flatten, output to CSV
+    """create output directory, read JSON, flatten, output to CSV
     iterates through files which have *.json extension
-    '''
+    """
 
     try:
         os.makedirs(CSV_DIRECTORY, exist_ok=True)
@@ -52,20 +50,20 @@ def main():
     except OSError as error:
         print(f"Directory {CSV_DIRECTORY} can not be created")
 
-    os.chdir('data')
+    os.chdir("data")
     print("Start conversion")
-    for json_file in glob.iglob('*.json'):
+    for json_file in glob.iglob("*.json"):
 
-        if json_file.endswith('.json'):
+        if json_file.endswith(".json"):
 
             # Create filename minus extension
-            fname = (os.path.splitext(json_file)[0])
+            fname = os.path.splitext(json_file)[0]
 
             # Read the JSON file as a Python dictionary
             data = read_json(json_file)
 
             new_data = normalize_json(data=data)
-            #print("New dict:", new_data, "\n")
+            # print("New dict:", new_data, "\n")
             print(f"converting {fname}")
 
             dataframe = pd.DataFrame(new_data)
@@ -74,5 +72,5 @@ def main():
     print("\ncomplete, converted csv files are in 'data/flattened_csvs'\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

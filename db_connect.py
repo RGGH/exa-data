@@ -1,0 +1,1 @@
+'''connects to the PostgrSQL database in Docker'''
