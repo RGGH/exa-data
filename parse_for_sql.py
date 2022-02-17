@@ -1,7 +1,25 @@
 import ast
+import glob
+import os
+import configparser
+
 import pandas as pd
+
+config = configparser.ConfigParser()
+ini_path = os.path.join(os.getcwd(),'conf.ini')
+config.read(ini_path)
+
+CSV_DIRECTORY = config.get('PATHS','csv_dir')
+
+
+#def get_csvs():
+
+
 csv = ("data/flattened_csvs/Bill567_Breitenberg711_1029f880-d3db-f477-9da3-f59c14ed22c6.csv")
+
 dict_from_csv = pd.read_csv(csv, header=None, index_col=0).squeeze("columns").to_dict()
+
+
 
 response = (dict_from_csv)
 entry = response[3][1]

@@ -6,8 +6,15 @@ Flattens all JSON files to CSV
 import glob
 import json
 import os
+import configparser
 
 import pandas as pd
+
+config = configparser.ConfigParser()
+ini_path = os.path.join(os.getcwd(),'conf.ini')
+config.read(ini_path)
+
+CSV_DIRECTORY = config.get('PATHS','csv_dir')
 
 
 def read_json(filename: str) -> dict:
@@ -38,8 +45,6 @@ def main():
     '''create output directory, read JSON, flatten, output to CSV
     iterates through files which have *.json extension
     '''
-
-    CSV_DIRECTORY = 'data/flattened_csvs'
 
     try:
         os.makedirs(CSV_DIRECTORY, exist_ok=True)
