@@ -1,1 +1,15 @@
 http://www.hl7.org/fhir/overview-dev.html
+
+https://www.cloudsavvyit.com/15435/how-to-deploy-postgresql-as-a-docker-container/
+
+https://dev.to/andre347/how-to-easily-create-a-postgres-database-in-docker-4moj
+
+https://linuxhandbook.com/install-vim-docker/
+
+https://ahmedzbyr.gitlab.io/database/postgres-dockerfile/
+
+docker run --name postgres-db -e POSTGRES_PASSWORD=docker -p 5432:5432 -d 
+docker exec -it postgres bash -c "sh /tmp/init.db.sh
+docker exec -it postgres-db /bin/bash
+
+
