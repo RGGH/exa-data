@@ -14,8 +14,9 @@ from set_constants import set_paths
 
 CSV_DIRECTORY = set_paths()
 
-
+'''Load the JSON and flatted mulitilayer nesting'''
 def read_json(filename: str) -> dict:
+    
 
     try:
         with open(filename, "r") as f:
