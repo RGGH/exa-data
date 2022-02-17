@@ -9,6 +9,9 @@ __pycache__/
 # csv
 *.csv
 
+# Coderunner
+tempCodeRunnerFile.py
+
 # Distribution / packaging
 .Python
 build/
