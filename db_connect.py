@@ -4,8 +4,8 @@
 import psycopg2
 
 try:
-    conn = psycopg2.connect(host="localhost", database="pythontest_db",
-                            user="postgres", password="docker")
+    conn = psycopg2.connect(host="localhost", database="postgres",
+                            user="postgres", password="postgres")
 except Exception as e:
     print(e)
     exit(0)
@@ -18,8 +18,8 @@ if conn is not None:
     cur = conn.cursor()
 
     # Getting a query ready.
-    #cur.execute('SELECT version();')
-    cur.execute('select * from DOCUMENT_TEMPLATE;')
+    cur.execute('SELECT version();')
+    #cur.execute('select * from DOCUMENT_TEMPLATE;')
 
     # we are fetching all the data from the query above.
     get_all_data = cur.fetchall()
