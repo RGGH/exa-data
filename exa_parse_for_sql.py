@@ -36,7 +36,7 @@ def get_csvs(csv_file):
     # shorten the query length
     dq = top_level.get("resource")
 
-    resource_type = dq.get("resourceType")
+    #resource_type = dq.get("resourceType")
     resource_id = dq.get("id")
     meta = dq.get("meta")
 
@@ -92,10 +92,9 @@ def get_csvs(csv_file):
     participant_service_provider_reference = dq.get("serviceProvider").get("reference")
     participant_service_provider_display = dq.get("serviceProvider").get("display")
 
-    result = {"full_url":full_url,
+    resultX = {"full_url":full_url,
             "p_resource":resource,
             "request":request,
-            "resource_type":resource_type,
             "resource_id":resource_id,
             "meta":meta,
             "identifier_use":identifier_use,
@@ -120,7 +119,14 @@ def get_csvs(csv_file):
             "participant_type_coding_individual_display":participant_type_coding_individual_display,
             "participant_location_display":participant_location_display,
             "participant_service_provider_reference":participant_service_provider_reference,
-            "participant_service_provider_display":participant_service_provider_display
+            "participant_service_provider_display":participant_service_provider_display.replace("\'","")
+    }
+
+
+    result = {"full_url":full_url,
+            "identifier_use":identifier_use,
+            "p_status":status,
+            "class_system":class_system,
     }
 
 

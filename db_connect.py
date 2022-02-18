@@ -35,29 +35,43 @@ def read_data():
         print(get_all_data)
 
         # Close connection
-        conn.close()
+        cur.close()
+        
     else:
         print('Connection not established to PostgreSQL.')
+
 
 '''create/add data to patient_info table'''
 def add_data(result):
+
+    conn = None
     conn = make_conn()
-    if conn is not None:
-        print('Connection established to PostgreSQL.')
 
-        # Creating a cursor
+    # Convert the Dictionary into a List of Tuples for SQL 
+    data = list(result.items())
+    print(data)
+
+    try:
+
+        # create a new cursor
         cur = conn.cursor()
+        # execute the INSERT statement
+        for d in data:
+            cur.execute("insert into patient_info(full_url, identifier_use,p_status,class_system ) VALUES (%s,%s,%s,%s)",d)
+
+    
+        # commit the changes to the database
+        conn.commit()
+        # close communication with the database
+        cur.close()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+
+    finally:
+        if conn is not None:
+            conn.close()
 
 
-        #columns= result.keys()
-        for k,v in result.items():
-            sql = '''insert into patient_info({}) VALUES ('{}');'''.format(k,v)
- 
-        cur.execute(sql)
 
-
-        # Close connection
-        conn.close()
-    else:
-        print('Connection not established to PostgreSQL.')
-
+read_data()

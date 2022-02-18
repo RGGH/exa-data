@@ -30,10 +30,7 @@ CREATE TABLE patient_info (
     participant_period_end varchar(255),
     participant_location_reference varchar(100),
     participant_location_display varchar (100),
-    participant_service_provider_reference varchar(255),
-    participant_service_provider_display varchar(255)
+    participant_service_provider_reference TEXT,
+    participant_service_provider_display TEXT
 );
 
-INSERT INTO patient_info (id, full_url, p_resource) VALUES 
-(1, 'There are only two kinds of languages: the ones people complain about and the ones nobody uses.', 'Bjarne Stroustrup'), 
-(17, 'The only way to learn a new programming language is by writing programs in it.', 'Dennis Ritchie');
