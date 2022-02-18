@@ -18,8 +18,8 @@ if conn is not None:
     cur = conn.cursor()
 
     # Getting a query ready.
-    cur.execute('SELECT version();')
-    #cur.execute('select * from DOCUMENT_TEMPLATE;')
+    #cur.execute('SELECT version();')
+    cur.execute('select * from quote;')
 
     # we are fetching all the data from the query above.
     get_all_data = cur.fetchall()
