@@ -6,6 +6,7 @@ Inserts values into into PostgreSQL : Docker
 import ast
 import glob
 import os
+import db_connect
 
 import pandas as pd
 
@@ -117,9 +118,6 @@ def get_csvs(csv_file):
             "participant_type_coding_period_end":participant_type_coding_period_end,
             "participant_type_coding_individual_reference":participant_type_coding_individual_reference,
             "participant_type_coding_individual_display":participant_type_coding_individual_display,
-            "participant_period_start":participant_period_start,
-            "participant_period_end":participant_period_end,
-            "participant_location_reference":participant_location_reference,
             "participant_location_display":participant_location_display,
             "participant_service_provider_reference":participant_service_provider_reference,
             "participant_service_provider_display":participant_service_provider_display
@@ -134,4 +132,5 @@ def main():
 
 if __name__ == '__main__':
     '''main driver'''
-    main()
+    #main()
+    db_connect.read_data()
