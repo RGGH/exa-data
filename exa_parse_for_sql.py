@@ -92,8 +92,8 @@ def get_csvs(csv_file):
     participant_service_provider_reference = dq.get("serviceProvider").get("reference")
     participant_service_provider_display = dq.get("serviceProvider").get("display")
 
-    return {"full_url":full_url,
-            "resource":resource,
+    result = {"full_url":full_url,
+            "p_resource":resource,
             "request":request,
             "resource_type":resource_type,
             "resource_id":resource_id,
@@ -101,7 +101,7 @@ def get_csvs(csv_file):
             "identifier_use":identifier_use,
             "identifier_system":identifier_system,
             "identifier_value":identifier_value,
-            "status":status,
+            "p_status":status,
             "class_system":class_system,
             "class_code":class_code,
             "type_coding_system":type_coding_system,
@@ -124,13 +124,16 @@ def get_csvs(csv_file):
     }
 
 
+    db_connect.add_data(result)
+
+
 def main():
-    '''main - import and parse all CSVS'''
+    '''Import and parse all CSVs'''
     for csv_file in glob.iglob("*.csv"):
         print(get_csvs(csv_file))
 
 
 if __name__ == '__main__':
     '''main driver'''
-    #main()
-    db_connect.read_data()
+    main()
+    

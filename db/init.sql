@@ -1,8 +1,10 @@
 CREATE TABLE patient_info (
-    id SERIAL PRIMARY KEY,
-    full_url varchar(255) NOT NULL UNIQUE,
+    id SERIAL,
+    full_url varchar(255),
     p_resource varchar(255),
-    p_id varchar(255),
+    request varchar(255),
+    resource_type varchar(255),
+    resource_id varchar(255),
     meta varchar(255),
     identifier_use varchar(255),
     identifier_system varchar(255),
@@ -29,8 +31,7 @@ CREATE TABLE patient_info (
     participant_location_reference varchar(100),
     participant_location_display varchar (100),
     participant_service_provider_reference varchar(255),
-    participant_service_provider_display varchar(255),
-    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+    participant_service_provider_display varchar(255)
 );
 
 INSERT INTO patient_info (id, full_url, p_resource) VALUES 

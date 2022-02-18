@@ -40,7 +40,7 @@ def read_data():
         print('Connection not established to PostgreSQL.')
 
 '''create/add data to patient_info table'''
-def create_data():
+def add_data(result):
     conn = make_conn()
     if conn is not None:
         print('Connection established to PostgreSQL.')
@@ -48,14 +48,13 @@ def create_data():
         # Creating a cursor
         cur = conn.cursor()
 
-        # Getting a query ready.
-        cur.execute('select * from patient_info;')
 
-        # we are fetching all the data from the query above.
-        get_all_data = cur.fetchall()
+        #columns= result.keys()
+        for k,v in result.items():
+            sql = '''insert into patient_info({}) VALUES ('{}');'''.format(k,v)
+ 
+        cur.execute(sql)
 
-        # Print all data
-        print(get_all_data)
 
         # Close connection
         conn.close()
