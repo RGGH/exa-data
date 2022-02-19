@@ -11,7 +11,7 @@ CREATE TABLE patient_info (
     identifier_value varchar(255),
     p_status TEXT,
     class_system varchar(255),
-    class_code INT,
+    class_code TEXT,
     type_coding_system varchar(255),
     type_coding_code varchar(20),
     type_coding_display varchar(255),

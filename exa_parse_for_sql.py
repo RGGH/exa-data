@@ -92,7 +92,7 @@ def get_csvs(csv_file):
     participant_service_provider_reference = dq.get("serviceProvider").get("reference")
     participant_service_provider_display = dq.get("serviceProvider").get("display")
 
-    resultX = {"full_url":full_url,
+    result = {"full_url":full_url,
             "p_resource":resource,
             "request":request,
             "resource_id":resource_id,
@@ -122,15 +122,9 @@ def get_csvs(csv_file):
             "participant_service_provider_display":participant_service_provider_display.replace("\'","")
     }
 
-
-    result = {"full_url":full_url,
-            "identifier_use":identifier_use,
-            "p_status":status,
-            "class_system":class_system,
-    }
-
-
     db_connect.add_data(result)
+    #db_connect_alchemy.add_data(result)
+
 
 
 def main():
