@@ -32,6 +32,7 @@ User guide :
 #### Run the 2 Python files
 
 - These have been kept separate to allow for batch conversion from JSON to CSV, and then import into SQL
+---
   python exa_flatten_json_csv.py
   python exa_parse_for_sql.py
   
