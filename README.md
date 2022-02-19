@@ -27,7 +27,19 @@ User guide :
     
 #### Install Python Packages
 
-    pip3 install -r requirements.txt
+    pip3 install -r requirements.tx
+    
+#### Run the 2 Python files
+
+- These have been kept separate to allow for batch conversion from JSON to CSV, and then import into SQL
+  python exa_flatten_json_csv.py
+  python exa_parse_for_sql.py
+  
+#### Check the imported data in in PostgreSQL 
+  python db_connect.py
+  
+
+   
     
    
     
