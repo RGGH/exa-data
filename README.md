@@ -18,5 +18,5 @@ User guide :
     Creating network "exa-data_default" with the default driver
     ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
     
- 
+    Stop your openvpn :
     sudo service openvpn stop
