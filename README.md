@@ -4,10 +4,10 @@ User guide :
 
 ### TLDR;
 
-#### Install Docker & Docker Compose
+#### Install Docker Compose
 
     https://docs.docker.com/compose/install/
     
     docker-compose --version
     
-    https://docs.docker.com/engine/install/
+    # https://docs.docker.com/engine/install/
