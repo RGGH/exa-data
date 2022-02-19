@@ -20,3 +20,15 @@ User guide :
     
     Stop your openvpn :
     sudo service openvpn stop
+    
+#### Run Docker Comopse
+ 
+    sudo docker-compose up
+    
+#### Install Python Packages
+
+    pip3 install -r requirements.txt
+    
+   
+    
+    
