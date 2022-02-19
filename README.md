@@ -6,5 +6,5 @@ User guide :
 
 #### Install Docker Compose
 
- https://docs.docker.com/compose/install/
- docker-compose --version
+    https://docs.docker.com/compose/install/
+    docker-compose --version
