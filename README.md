@@ -12,7 +12,7 @@ User guide :
     
     # https://docs.docker.com/engine/install/
     
-#### If you get an error :
+### *If you get an error :
     
     (env) rag@rag-Latitude-5490:~/env/exa-data-1/exa-data$ sudo docker-compose up
     Creating network "exa-data_default" with the default driver
