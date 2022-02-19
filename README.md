@@ -2,6 +2,9 @@
 
 User guide : 
 
-- TLDR;
-- https://docs.docker.com/compose/install/
-- 
+### TLDR;
+
+#### Install Docker Compose
+
+ https://docs.docker.com/compose/install/
+ docker-compose --version
