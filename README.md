@@ -4,7 +4,7 @@ User guide :
 
 ### TLDR;
 
-#### Install Docker Compose
+#### Install Docker & Docker Compose
 
     https://docs.docker.com/compose/install/
     
