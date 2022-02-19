@@ -11,3 +11,12 @@ User guide :
     docker-compose --version
     
     # https://docs.docker.com/engine/install/
+    
+#### If you get an error :
+    
+    (env) rag@rag-Latitude-5490:~/env/exa-data-1/exa-data$ sudo docker-compose up
+    Creating network "exa-data_default" with the default driver
+    ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
+    
+ 
+    sudo service openvpn stop
