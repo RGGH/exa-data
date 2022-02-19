@@ -51,14 +51,6 @@ def add_data(result):
 
     try:
 
-        # # create data list to pass to cur.execute
-        # data = ()
-        # a =list(data)
-        # for x in result.keys():
-        #     a.append(x)
-        # data =tuple(a)
-        # len_data = (len(data))
-
         # create a new cursor
         cur = conn.cursor()
 
@@ -71,8 +63,9 @@ def add_data(result):
         identifier_use = result.get('identifier_use')
         identifier_use = (""+identifier_use+"")
         
+
         p_status = result.get('p_status')
-        p_status = (""+p_status+"")
+
         
         # data 2 
         class_system = result.get('class_system')
@@ -135,12 +128,13 @@ def add_data(result):
         participant_service_provider_display = (""+participant_service_provider_display+"")
 
         # SQL INSERT to paitient_info
-        SQL1 = "INSERT INTO patient_info (full_url, identifier_use,p_status) VALUES (%s,%s,%s);"
+        SQL1 = "INSERT INTO patient_info (p_status) VALUES (%s);"
         SQL2 = "INSERT INTO patient_info(class_system,class_code,type_coding_system,type_coding_code,type_coding_display) VALUES (%s,%s,%s,%s,%s);"
         SQL3 = "INSERT INTO patient_info(type_text,type_subject_reference,type_subject_display,participant_type_coding_system,participant_type_coding_code,participant_type_coding_display,participant_type_coding_text) VALUES (%s,%s,%s,%s,%s,%s,%s);"
         SQL4 = "INSERT INTO patient_info(participant_type_coding_period_start,participant_type_coding_period_end,participant_type_coding_individual_reference,participant_type_coding_individual_display,participant_location_display,participant_service_provider_reference,participant_service_provider_display) VALUES (%s,%s,%s,%s,%s,%s,%s);"
 
-        data1 =(full_url,identifier_use,class_system)
+        data1 =(p_status)
+        # data1 =(full_url,identifier_use,class_system)
         data2 =(class_system,class_code,type_coding_system, type_coding_code,type_coding_display)
         data3 =(type_text,type_subject_reference,type_subject_display,participant_type_coding_system,participant_type_coding_code,participant_type_coding_display,participant_type_coding_text)
         data4 =(participant_type_coding_period_start,participant_type_coding_period_end,participant_type_coding_individual_reference,participant_type_coding_individual_display,participant_location_display,participant_service_provider_reference,participant_service_provider_display)
