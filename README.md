@@ -33,11 +33,11 @@ User guide :
 
 - These have been kept separate to allow for batch conversion from JSON to CSV, and then import into SQL
 ---
-  python exa_flatten_json_csv.py
-  python exa_parse_for_sql.py
+    python exa_flatten_json_csv.py
+    python exa_parse_for_sql.py
   
 #### Check the imported data in in PostgreSQL 
-  python db_connect.py
+    python db_connect.py
   
 
    
