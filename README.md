@@ -9,9 +9,9 @@ User guide :
 - Install Docker
 - Run python code (2 files below)
 ---
-    python exa_flatten_json_csv.py
+    python3 exa_flatten_json_csv.py
     
-    python exa_parse_for_sql.py
+    python3 exa_parse_for_sql.py
 ---
 
 ## Full Steps:
@@ -38,25 +38,26 @@ User guide :
     
 #### 3. Install Python Packages
 
-    pip3 install -r requirements.tx
+    pip3 install -r requirements.txt
     
 #### 4. Run the 2 Python files
 
 - These have been kept separate to allow for batch conversion from JSON to CSV, and then import into SQL
 ---
-    python exa_flatten_json_csv.py
-    python exa_parse_for_sql.py
+    python3 exa_flatten_json_csv.py
+    python3 exa_parse_for_sql.py
   
 #### 5. Check the imported data in in PostgreSQL 
-    python db_connect.py
+    python3 db_connect.py
     
 ---
 
 ### About this project
 
+- used Docker compose with yaml file to create container for a PostgreSQL 14 image
 - used regex to extract nested keys from 50,000 lines of JSON
 - used Vim to remove empty rows
-- use Pandas to remove duplicates but preserve sort order
+- used Pandas to remove duplicates but preserve sort order
 - used Vim to add data types in bulk, plus commas
 - used Jupyter Notebook for exploratory data anlaysis and testing
 - unable to find data dictionary on FHIR site for this actual project http://hl7.org/fhir/overview-dev.html http://hl7.org/fhir/resourcelist.html
