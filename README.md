@@ -8,7 +8,7 @@ Purpose of code : Transfer data to structured format (SQL) from 80 sample JSON f
 ## TLDR;
 
 - Clone this repo : `git clone https://github.com/RGGH/exa-data.git`
-- Install Docker
+- Install Docker to create the database and initialize 'patient_info' table with required fields
 - Run python code (2 files below)
 ---
     python3 exa_flatten_json_csv.py
