@@ -64,6 +64,13 @@ User guide :
 - not all fields populated due to time constraint, have done first few in order
 - had issues with lists inside dicts. Resolved this with 'typing' module https://docs.python.org/3/library/typing.html#module-typing
 
+###### ToDo
+- Add extra tests
+- Fix issues flagged in pylint with github workflow
+- Consider more than 1 table for data, eg patients table, plus a join with notes each fullUrl
+- Create frontend in HTML/JavaScript and consume data from a FastAPI Python API
+- add remaining fieids in exa_parse_for_sql.py
+
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/exadata.gif)
   
 
