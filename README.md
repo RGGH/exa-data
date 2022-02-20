@@ -5,7 +5,7 @@ User guide :
 
 ## TLDR;
 
-- Clone this repo
+- Clone this repo : `git clone https://github.com/RGGH/exa-data.git`
 - Install Docker
 - Run python code (2 files below)
 ---
