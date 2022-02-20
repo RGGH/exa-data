@@ -1,7 +1,7 @@
 # Example ETL project using FHIR standard data
 FHIR is a standard for health care data exchange, published by HL7®
 
-Purpose : Transfer data to structred format (SQL)  from 80 sample JSON files, with circa 50,000 lines in each file.
+Purpose of code : Transfer data to structured format (SQL) from 80 sample JSON files, with circa 50,000 lines in each file.
 
 # User guide : 
 
