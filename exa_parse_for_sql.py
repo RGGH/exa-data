@@ -9,8 +9,8 @@ import pandas as pd
 
 # # Set file path for CSVs
 # from set_constants import set_paths
-csv_directory = '/home/rag/env/exa-data-1/exa-data/data/flattened_csvs'
-os.chdir(csv_directory)
+CSV_DIRECTORY = '/home/rag/env/exa-data-1/exa-data/data/flattened_csvs'
+os.chdir(CSV_DIRECTORY)
 
 def process_csv(csv_file):
 
@@ -55,6 +55,8 @@ def process_csv(csv_file):
         print(status)
 
         class_system = (dq.get('class').get('system'))
+
+        
         # class_code = (dq.get('class').get('code'))
         # type_coding_system = (dq.get('type')[0].get('coding')[0].get('system'))
         # type_coding_code = (dq.get('type')[0].get('coding')[0].get('code'))

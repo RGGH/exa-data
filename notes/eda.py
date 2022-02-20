@@ -7,7 +7,7 @@ trial_file = "data/Zane918_Schoen8_4995ca99-2ab9-3b18-a56e-c33d29e53af0.json"
 with open(trial_file) as json_file:
     data_dict = json.load(json_file)
 
-
+'''Flatten nested JSON'''
 def flatten(current, key, result):
     if isinstance(current, dict):
         for k in current:
