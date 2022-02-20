@@ -59,8 +59,8 @@ User guide :
 - use Pandas to remove duplicates but preserve sort order
 - used Vim to add data types in bulk, plus commas
 - used Jupyter Notebook for exploratory data anlaysis and testing
-- Unable to find data dictionary on FHIR site for this actual project http://hl7.org/fhir/overview-dev.html http://hl7.org/fhir/resourcelist.html
-- Not all fields populated due to time constraint, have done first few in order
+- unable to find data dictionary on FHIR site for this actual project http://hl7.org/fhir/overview-dev.html http://hl7.org/fhir/resourcelist.html
+- not all fields populated due to time constraint, have done first few in order
 - had issues with lists inside dicts. Resolved this with 'typing' module https://docs.python.org/3/library/typing.html#module-typing
 
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/db_v_py.png)
