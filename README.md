@@ -1,4 +1,4 @@
-# Example project using FHIR standard data
+# Example ETL project using FHIR standard data
 FHIR is a standard for health care data exchange, published by HL7®
 
 User guide : 
