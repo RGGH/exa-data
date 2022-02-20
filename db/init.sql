@@ -1,4 +1,5 @@
 CREATE TABLE patient_info (
+pid serial,
 type_ varchar(255),
 entry_ varchar(255),
 fullUrl TEXT,
