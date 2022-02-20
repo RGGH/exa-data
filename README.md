@@ -13,7 +13,7 @@ User guide :
     python exa_parse_for_sql.py
 ---
 
-### Full Steps:
+## Full Steps:
 #### 1. Install Docker Compose
 
     https://docs.docker.com/compose/install/
