@@ -2,7 +2,14 @@
 
 User guide : 
 
-### TLDR;
+## TLDR;
+
+- Clone this repo
+- Install Docker
+- python exa_flatten_json_csv.py
+- python exa_parse_for_sql.py
+
+---
 
 #### Install Docker Compose
 
