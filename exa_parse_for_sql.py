@@ -5,11 +5,14 @@ Inserts values into into PostgreSQL : Docker
 import glob
 import os
 import pandas as pd
-import db_connect 
+import db_connect
+from typing import Dict
 
-# # Set file path for CSVs
-# from set_constants import set_paths
-CSV_DIRECTORY = '/home/rag/env/exa-data-1/exa-data/data/flattened_csvs'
+from set_constants import get_paths
+
+CSV_DIRECTORY = get_paths()
+
+#CSV_DIRECTORY = '/home/rag/env/exa-data-1/exa-data/data/flattened_csvs'
 os.chdir(CSV_DIRECTORY)
 
 def process_csv(csv_file):
@@ -38,28 +41,77 @@ def process_csv(csv_file):
         current_row = current_row.strip('\"')
         d = eval(current_row)
 
-       # shorten the query length
+        # shorten the initial query length
         dq = d.get('resource')
 
-        # As per init.sql
+        # As per init.sql - placeholders to be replaced with selectors #
         type_ = "type"
-        entry_ ="entry"
-        full_url = "furl"
-        resource_ = "pres"
-        resource_type = (dq.get('resourceType'))
-        id = (dq.get('id'))
-        meta = (dq.get('meta'))
 
-        dictionary ={ 'info-1' : (type_, entry_,
-                                full_url, resource_,
-                                resource_type, id, 'meta')
+        entry_ ="entry"
+
+        full_url = d.get('fullUrl')
+
+        resource_ = "resource placeholder"
+
+        resource_type = (dq.get('resourceType'))
+
+        id = (dq.get('id'))
+
+        # check if dict or str
+        resource_meta = dq.get('meta','0')
+        resource_meta_profile = resource_meta.get('profile')[0] if isinstance(resource_meta, Dict) else "no value"
+    
+        profile = "profile placeholder"
+
+        text_ = "text placholder"
+
+        # check if dict or str
+        resource_status = dq.get('status','0')
+        status_ = resource_status.get('profile').get('text','0')if isinstance(resource_status, Dict) else "no status"
+
+        div_ = dq.get('text','0')
+        if isinstance(div_, Dict):
+            div_ = div_.get('div')
+        else:
+            div_ = ("no div")
+
+        extension = "extension placeholder"
+
+        url_ = "url placeholde"
+
+        value_coding = "valueCoding_placeholder"
+
+
+        # break inserts into manageable 
+        # group - 1
+        dictionary1 ={ 'info-1' : (type_, 
+                                entry_,
+                                full_url, 
+                                resource_,
+                                resource_type, id, 
+                                resource_meta_profile,
+                                profile,text_,
+                                status_,
+                                div_,
+                                )
         }
 
-        for i in dictionary.values():
+        for i in dictionary1.values():
             sql1='''insert into patient_info(type_,entry_,fullUrl,
-            resource_,resourceType, id, meta) VALUES{};'''.format(i)
+            resource_,resourceType, id, meta, profile_,text_,status_,div) VALUES{};'''.format(i)
 
             cursor.execute(sql1)
+
+        # group - 2
+        dictionary2 ={ 'info-2' : (extension,
+                                url_,
+                                value_coding)
+        }
+
+        for i in dictionary2.values():
+            sql2='''insert into patient_info(extension, url_,valueCoding) VALUES{};'''.format(i)
+
+            cursor.execute(sql2)
 
     conn.commit()
     conn.close()
@@ -73,5 +125,7 @@ def main():
 
 
 if __name__ == '__main__':
+    '''runs all files if main() is uncommented  
+    comment it out, and then uncomment the line below to run on just 1 file'''
     main()
-    #process_csv('Gus973_Windler79_09e292d4-f186-331c-ed95-c503acabc54e.csv')
+    #process_csv('Aaron697_Dickens475_8c95253e-8ee8-9ae8-6d40-021d702dc78e.csv')
