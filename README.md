@@ -39,6 +39,8 @@ User guide :
 #### Check the imported data in in PostgreSQL 
     python db_connect.py
     
+---
+
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/db_v_py.png)
   
 
