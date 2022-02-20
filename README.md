@@ -11,7 +11,7 @@ User guide :
 
 ---
 
-#### Install Docker Compose
+#### 1. Install Docker Compose
 
     https://docs.docker.com/compose/install/
     
@@ -28,22 +28,22 @@ User guide :
     Stop your openvpn :
     sudo service openvpn stop
     
-#### Run Docker Comopse
+#### 2. Run Docker Comopse
  
     sudo docker-compose up
     
-#### Install Python Packages
+#### 3. Install Python Packages
 
     pip3 install -r requirements.tx
     
-#### Run the 2 Python files
+#### 4. Run the 2 Python files
 
 - These have been kept separate to allow for batch conversion from JSON to CSV, and then import into SQL
 ---
     python exa_flatten_json_csv.py
     python exa_parse_for_sql.py
   
-#### Check the imported data in in PostgreSQL 
+#### 5. Check the imported data in in PostgreSQL 
     python db_connect.py
     
 ---
@@ -55,7 +55,9 @@ User guide :
 - use Pandas to remove duplicates but preserve sort order
 - used Vim to add data types in bulk, plus commas
 - used Jupyter Notebook for exploratory data anlaysis and testing
-- Unable to find data dictionary on FHIR site for this project 
+- Unable to find data dictionary on FHIR site for this project
+- Not all fields populated due to time constraint, have done first few in order
+- had issues with lists inside dicts. Resolved this with 'typing' module https://docs.python.org/3/library/typing.html#module-typing
 
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/db_v_py.png)
   
