@@ -3,10 +3,8 @@ import configparser
 import os
 
 
-'''Set CSV Path in the ini file'''
-
-
 def set_paths() -> str:
+    '''Set CSV Path in the ini file'''
     config = configparser.ConfigParser()
     ini_path = os.path.join(os.getcwd(), 'conf.ini')
     config.read(ini_path)

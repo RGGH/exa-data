@@ -14,8 +14,8 @@ from set_constants import set_paths
 
 csv_directory = set_paths()
 
-'''Load the JSON and flatted mulitilayer nesting'''
 def read_json(filename: str) -> dict:
+    '''Load the JSON and flatted mulitilayer nesting'''
 
     try:
         with open(filename, "r") as json_file:
@@ -27,7 +27,7 @@ def read_json(filename: str) -> dict:
 
 
 def normalize_json(data: dict) -> dict:
-    
+    '''flatten nested strucure'''
     new_data = {}
     for key, value in data.items():
         if not isinstance(value, dict):

@@ -4,8 +4,8 @@ Inserts values into into PostgreSQL : Docker
 '''
 import glob
 import os
-import db_connect 
 import pandas as pd
+import db_connect 
 
 # # Set file path for CSVs
 # from set_constants import set_paths
@@ -13,6 +13,7 @@ CSV_DIRECTORY = '/home/rag/env/exa-data-1/exa-data/data/flattened_csvs'
 os.chdir(CSV_DIRECTORY)
 
 def process_csv(csv_file):
+    ''' Load 1 CSV and extract each row, and INSERT each row'''
 
     df = pd.read_csv(csv_file)
     num_rows = len(df)
@@ -72,6 +73,5 @@ def main():
 
 
 if __name__ == '__main__':
-    '''main driver'''
     main()
     #process_csv('Gus973_Windler79_09e292d4-f186-331c-ed95-c503acabc54e.csv')
