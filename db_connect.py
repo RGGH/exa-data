@@ -2,15 +2,22 @@
 # pip install psycopg2-binary
 
 import psycopg2
+import set_constants
 
 ls = []
 
 '''Make connection using psycopg2 - call from each function'''
 def make_conn():
 
+    creds = set_constants.get_db_creds()
+    host = creds[0]
+    user= creds[1]
+    database = creds[3]
+    password=creds[2]
+    
     try:
-        conn = psycopg2.connect(host="localhost", database="postgres",
-                                user="postgres", password="postgres")
+        conn = psycopg2.connect(host=host, database=database,
+                                user=user, password=password)
 
     except Exception as e:
         print(e)
