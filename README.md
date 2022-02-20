@@ -69,7 +69,7 @@ Purpose of code : Transfer data to structured format (SQL) from 80 sample JSON f
 - Add extra tests
 - Fix issues flagged in pylint with github workflow
 - Consider more than 1 table for data, eg patients table, plus a join with notes each fullUrl
-- Create frontend in HTML/JavaScript and consume data from a FastAPI Python API
+- Create frontend in HTML/JavaScript and consume data from an API (yet to be written, in Python with FastAPI)
 - add remaining fieids in exa_parse_for_sql.py
 
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/exadata.gif)
