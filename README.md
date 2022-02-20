@@ -64,7 +64,7 @@ User guide :
 - not all fields populated due to time constraint, have done first few in order
 - had issues with lists inside dicts. Resolved this with 'typing' module https://docs.python.org/3/library/typing.html#module-typing
 
-![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/db_v_py.png)
+![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/exadata.gif)
   
 
    
