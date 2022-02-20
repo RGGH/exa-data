@@ -48,8 +48,7 @@ User guide :
 - use Pandas to remove duplicates but preserve sort order
 - used Vim to add data types in bulk, plus commas
 - used Jupyter Notebook for exploratory data anlaysis and testing
-- Unable to find data dictionary on FHIR site for this project
-- 
+- Unable to find data dictionary on FHIR site for this project 
 
 ![screenshot](https://github.com/RGGH/exa-data/blob/main/notes/db_v_py.png)
   
