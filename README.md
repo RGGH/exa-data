@@ -7,7 +7,7 @@ User guide :
 - Clone this repo
 - Install Docker
 - Run python code (2 files below)
----
+-
     python exa_flatten_json_csv.py
     
     python exa_parse_for_sql.py
