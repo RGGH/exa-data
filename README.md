@@ -8,10 +8,9 @@ User guide :
 - Install Docker
 - Run python code (2 files below)
 ---
-    `python exa_flatten_json_csv.py`
-    (flattens nested JSON files)<br>
-    `python exa_parse_for_sql.py` 
-    (parses CSVs and adds to SQL DB)<br>
+    python exa_flatten_json_csv.py
+    
+    python exa_parse_for_sql.py
 
 ---
 
