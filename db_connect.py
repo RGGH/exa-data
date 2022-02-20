@@ -38,7 +38,7 @@ def read_data():
         cur = conn.cursor()
 
         # Getting a query ready.
-        cur.execute('select * from patient_info ORDER BY 8 DESC;')
+        cur.execute('select * from patient_info;')
 
         # we are fetching all the data from the query above.
         get_all_data = cur.fetchall()
@@ -63,7 +63,8 @@ def read_div():
         cur = conn.cursor()
 
         # Getting a query ready.
-        cur.execute("select fullUrl from patient_info WHERE resourceType != 'Patient';")
+        #cur.execute("select div from patient_info WHERE resourceType != 'Patient';")
+        cur.execute("select valueCoding from patient_info order by valueCoding ASC;")
 
         # we are fetching all the data from the query above.
         get_all_data = cur.fetchall()

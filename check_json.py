@@ -1,10 +1,10 @@
 
 import json
 from pprint import pprint
-from typing import Dict
+from typing import Dict, List
 
 # Opening JSON file
-f = open('/home/rag/env/exa-data-1/exa-data/data/Aaron697_Dickens475_8c95253e-8ee8-9ae8-6d40-021d702dc78e.json')
+f = open('data/Abbey813_Price929_83524678-9bff-93b7-ef89-d7f5390072ff.json')
 
 # returns JSON object as
 # a dictionary
@@ -20,47 +20,28 @@ def entry_full_url():
     for fullUrl in entry:
         ls.append(fullUrl)
     return ls
-        
+
 
 cleaned_list = entry_full_url()
 for full in cleaned_list:
-    # #print(full)
-    full_url = full.get('fullUrl')
-    print(full_url)
-    # resource = full.get('resource')
-    # # print(resource)
-    # # print("\n\n\n")
-    # #print(resource)
 
-    # # resource_resource_type = full.get('resource').get('resourceType')
-    # # print(resource_resource_type)
-    # # # #
-    # # # #
-    # # #
+    ''' Handle TypeError: 'NoneType' object is not subscriptable '''
+    try:
 
-    # # div_ = resource.get('text','0')
-    # # if isinstance(div_, Dict):
-    # #     div_ = div_.get('div')
-    # #     print(div_)
-    # # else:
-    # #     print("no value")
+        extension = full.get('resource').get('extension')[0]
+        print(extension)
+        if extension == None: 
+            print("None Type - Dictionary missing")
 
-    # ex = resource.get('url','0')
+        if isinstance(extension, Dict):
+            extension = extension.get('url')
+            print(type(extension))
+        else:
+            if isinstance(extension, List):
+                extension = full.get('resource').get('extension')[0].get('url')
+                print(extension)
+    except TypeError as te:
+        print(te)
 
-    # if isinstance(ex, Dict):
-    #     ex = ex.get('url')
-    #     print(ex)
-    # else:
-    #     print("no ex")       
-
-
-
-# #    # extension
-#     coding = full.get('resource').get('category')#[0].get('coding')[0]
-#     if isinstance(coding,Dict):
-#         coding = coding.get('coding')
-#         print(coding)
-#     else:
-#         print("no coding")
 
 

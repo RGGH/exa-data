@@ -6,7 +6,7 @@ import glob
 import os
 import pandas as pd
 import db_connect
-from typing import Dict
+from typing import Dict, List
 
 from set_constants import get_paths
 
@@ -36,82 +36,98 @@ def process_csv(csv_file):
     # iterate though each row, get values from dict, and INSERT into TABLE patient_info
     for i in range(0,num_rows):
 
-        current_row = entry[i]
-        # convert string to dict
-        current_row = current_row.strip('\"')
-        d = eval(current_row)
+        try:
 
-        # shorten the initial query length
-        dq = d.get('resource')
+            current_row = entry[i]
+            # convert string to dict
+            current_row = current_row.strip('\"')
+            d = eval(current_row)
 
-        # As per init.sql - placeholders to be replaced with selectors #
-        type_ = "type"
+            # shorten the initial query length
+            dq = d.get('resource')
 
-        entry_ ="entry"
+            # As per init.sql - placeholders to be replaced with selectors #
+            # -------------------------------------------------------------#
+            type_ = "type"
 
-        full_url = d.get('fullUrl')
+            entry_ ="entry"
 
-        resource_ = "resource placeholder"
+            full_url = d.get('fullUrl')
 
-        resource_type = (dq.get('resourceType'))
+            resource_ = "resource placeholder"
 
-        id = (dq.get('id'))
+            resource_type = (dq.get('resourceType'))
 
-        # check if dict or str
-        resource_meta = dq.get('meta','0')
-        resource_meta_profile = resource_meta.get('profile')[0] if isinstance(resource_meta, Dict) else "no value"
-    
-        profile = "profile placeholder"
+            id = (dq.get('id'))
 
-        text_ = "text placholder"
+            # DB name = meta
+            resource_meta = dq.get('meta','0')
+            resource_meta_profile = resource_meta.get('profile')[0] if isinstance(resource_meta, Dict) else "n"
+        
+            profile = "profile placeholder"
 
-        # check if dict or str
-        resource_status = dq.get('status','0')
-        status_ = resource_status.get('profile').get('text','0')if isinstance(resource_status, Dict) else "no status"
+            text_ = "text placholder"
 
-        div_ = dq.get('text','0')
-        if isinstance(div_, Dict):
-            div_ = div_.get('div')
-        else:
-            div_ = ("no div")
+            # DB name = status_
+            resource_text_status = dq.get('text','0')
+            status_ = resource_text_status.get('status')if isinstance(resource_text_status, Dict) else ''
 
-        extension = "extension placeholder"
+            # DB name = div
+            resource_text_div = dq.get('text','0')
+            div_ = resource_text_div.get('div') if isinstance(resource_text_div, Dict) else ''
 
-        url_ = "url placeholde"
+            # DB name = extension
+            resource_extension = dq.get('extension','0')[0]
+            extension = resource_extension.get('url') if isinstance(resource_extension, Dict) else ''
+        
+            # DB name = url
+            resource_extension_extension_url = dq.get('extension','0')[0]
+            url_ = resource_extension_extension_url.get('extension')[0].get('url') if isinstance(resource_extension_extension_url, List) else ''
 
-        value_coding = "valueCoding_placeholder"
+            # DB name = valueCoding
+            resource_extension_extension_valueCoding = dq.get('extension','0')[0]
+            value_coding = resource_extension_extension_valueCoding.get('extension')[0].get('valueCoding') if isinstance(resource_extension_extension_valueCoding, List) else ''
+
+            # Etc Etc...down to #137...
 
 
-        # break inserts into manageable 
-        # group - 1
-        dictionary1 ={ 'info-1' : (type_, 
-                                entry_,
-                                full_url, 
-                                resource_,
-                                resource_type, id, 
-                                resource_meta_profile,
-                                profile,text_,
-                                status_,
-                                div_,
-                                )
-        }
+            # break inserts into manageable 
+            # group - 1
+            dictionary1 ={ 'info-1' : (type_, 
+                                    entry_,
+                                    full_url, 
+                                    resource_,
+                                    resource_type, id, 
+                                    resource_meta_profile,
+                                    profile,text_,
+                                    status_,
+                                    div_,
+                                    )
+            }
 
-        for i in dictionary1.values():
-            sql1='''insert into patient_info(type_,entry_,fullUrl,
-            resource_,resourceType, id, meta, profile_,text_,status_,div) VALUES{};'''.format(i)
+            for i in dictionary1.values():
 
-            cursor.execute(sql1)
+                sql1='''insert into patient_info(type_,entry_,fullUrl,
+                resource_,resourceType, id, meta, profile_,text_,status_,div) VALUES{};'''.format(i)
 
-        # group - 2
-        dictionary2 ={ 'info-2' : (extension,
-                                url_,
-                                value_coding)
-        }
+                cursor.execute(sql1)
 
-        for i in dictionary2.values():
-            sql2='''insert into patient_info(extension, url_,valueCoding) VALUES{};'''.format(i)
+            # group - 2
+            dictionary2 ={ 'info-2' : (extension,
+                                    url_,
+                                    value_coding)
+            }
 
-            cursor.execute(sql2)
+            for i in dictionary2.values():
+
+                sql2='''insert into patient_info(extension, url_,valueCoding) VALUES{};'''.format(i)
+
+                cursor.execute(sql2)
+
+
+
+        except (TypeError, AttributeError) as te:
+            print(te)
 
     conn.commit()
     conn.close()
